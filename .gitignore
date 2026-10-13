@@ -1,0 +1,18 @@
+# Microsoft Office temporary and lock files
+~$*.xlsx
+~$*.xlsm
+~$*.xls
+~$*.csv
+
+# Power BI temporary/backup files (keep the actual .pbix report)
+*.pbix.autosave
+*.pbix.backup
+
+# Operating system metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / local workspace
+.vscode/
+.idea/
