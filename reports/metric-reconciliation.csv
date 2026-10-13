@@ -1,0 +1,51 @@
+question_number,business_question,documented_answer,recomputed_from_workbook,status,notes
+1,Total recorded Sales before applying separate discount,"$1,067,061.93","$1,067,061.93; Sales equals Quantity × UnitPrice and does not deduct Discount",MATCH_WITH_CAVEAT,Recorded Sales is pre-discount basis.
+2,Total Profit,"$198,747.08","$198,747.08",MATCH,Sum of source Profit.
+3,Overall profit margin,18.63%,18.63% = Profit / recorded Sales,MATCH_WITH_CAVEAT,Confirm Sales denominator and how Profit treats discounts.
+4,Region with highest Sales,South,"South — $274,292.29",MATCH,
+5,Region with lowest Sales,Midwest,"Midwest — $258,378.03",MATCH,
+6,Most profitable region,West,"West — Profit $51,438.77",MATCH,Total source Profit.
+7,Category with highest Sales,Furniture,"Furniture — $403,893.16",MATCH,
+8,Category with lowest Sales,Decor,"Decor — $65,344.22",MATCH,
+9,Category with highest total Profit,Furniture,"Furniture — Profit $72,102.74",MATCH,Total profit differs from margin ranking.
+10,Product with highest Sales,Office Chair,"Office Chair — $87,643.02",MATCH,
+11,Total orders,"2,500","2,500 distinct OrderID values",MATCH,
+12,Average order value,$426.82,$426.82 = recorded Sales / orders,MATCH,Uses pre-discount Sales.
+13,Average discount rate,6.54%,6.54% simple mean; estimated weighted rate = 6.89%,MATCH_WITH_CAVEAT,Unweighted mean and weighted rate differ.
+14,Segment contributing the most Sales,Consumer,"Consumer — $588,967.43 (55.20%)",MATCH,
+15,Most profitable segment,Consumer,"Consumer — Profit $110,686.87",MATCH,
+16,Most-used shipping mode,Standard Class,"Standard Class — 1,391 orders",MATCH,
+17,Ship mode with highest average shipping cost,Second Class,Second Class — $31.48 per order,MATCH,
+18,City with highest Sales,New York,"New York — $98,528.56",MATCH,
+19,City with lowest Sales,Houston,"Houston — $52,846.81",MATCH,
+20,Unique customers,855,855 distinct CustomerID values,MATCH,
+21,Top five customers by Sales,BH-CUST-0392; BH-CUST-0801; BH-CUST-0855; BH-CUST-0332; BH-CUST-0298,"BH-CUST-0392 ($6,202.11); BH-CUST-0801 ($5,623.46); BH-CUST-0855 ($5,400.64); BH-CUST-0332 ($5,122.09); BH-CUST-0298 ($5,071.35)",MATCH,Ranked by recorded Sales.
+22,Best-selling month,2023-01,"2023-01 — $43,834.09",MATCH,
+23,Worst-selling month,2024-12,"2024-12 — $17,364.85",MATCH,
+24,Annual Sales trend,"2023: $356,708.02; 2024: $349,858.76; 2025: $360,495.15","2023: $356,708.02; 2024: $349,858.76 (-1.92%); 2025: $360,495.15 (+3.04%)",MATCH,
+25,Average Profit/Sales ratio by category,Appliances 18.9%; Decor 18.6%; Furniture 17.9%; Kitchenware 18.7%; Outdoor 19.6%,Appliances 18.95%; Decor 18.62%; Furniture 17.85%; Kitchenware 18.69%; Outdoor 19.58%,MATCH,Matches after one-decimal rounding.
+26,Total quantity sold,"4,057","4,057 units",MATCH,
+27,Region with highest average order value,West,West — $448.81 per order,MATCH,
+28,Share of orders with discount,59.88%,"1,497 / 2,500 = 59.88%",MATCH,
+29,Average ShippingCost overall,$30.59,$30.59 per order,MATCH,
+30,Segment with most Same Day shipments,Consumer,Consumer — 135 orders (Corporate 72; Home Office 37),MATCH,
+31,Correlation between Discount and Profit,-0.032,Pearson r = -0.032,MATCH_WITH_CAVEAT,Weak association; not causal.
+32,Category with highest average UnitPrice,Furniture,Furniture — $465.07 average UnitPrice,MATCH,
+33,Furniture Sales,"$403,893.16","$403,893.16",MATCH,
+34,Appliances Profit,"$54,033.85","$54,033.85",MATCH,
+35,Region with highest average ShippingCost,Midwest,Midwest — $31.50 per order,MATCH,
+36,Consumer segment Sales share,55.20%,"$588,967.43 / $1,067,061.93 = 55.20%",MATCH,
+37,Average Discount by region,Midwest 6.6%; Northeast 6.7%; South 6.7%; West 6.2%,Midwest 6.56%; Northeast 6.70%; South 6.70%; West 6.15%,MATCH,Matches after one-decimal rounding.
+38,Most profitable product by total Profit,Sofa,"Sofa — Profit $15,826.54",MATCH,
+39,Least profitable product by total Profit,Lamp,"Lamp — Profit $2,323.82",MATCH,
+40,Average Sales value in Northeast,$413.54,$413.54 per order,MATCH,
+41,Order counts per region,Northeast 653; Midwest 633; South 625; West 589,Northeast 653; Midwest 633; South 625; West 589,MATCH,"Counts total 2,500."
+42,Average Profit per order,$79.50,"$198,747.08 / 2,500 = $79.50",MATCH,
+43,Shipping mode with highest Sales,Standard Class,"Standard Class — $587,562.39",MATCH,
+44,Corporate segment Sales,"$311,905.09","$311,905.09",MATCH,
+45,Average quantity per Outdoor order,1.66,851 units / 513 orders = 1.66,MATCH,
+46,Total ShippingCost,"$76,477.65","$76,477.65",MATCH,
+47,City with highest average Profit per order,San Francisco,San Francisco — $111.58 per order,MATCH,
+48,Sales-to-shipping-cost ratio,13.95x,"$1,067,061.93 / $76,477.65 = 13.95x",MATCH,
+49,Estimated quarterly Sales run-rate,"$88,921.83","Historical mean = $1,067,061.93 / 12 quarters = $88,921.83",MATCH_WITH_CAVEAT,"Historical average per quarter, not a forecast."
+50,Net profit margin after shipping,11.46%,"($198,747.08 − $76,477.65) / $1,067,061.93 = 11.46%",MATCH_WITH_CAVEAT,Label post-shipping profit / recorded Sales until discount treatment is confirmed.
