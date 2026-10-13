@@ -1,0 +1,117 @@
+{
+  "source_workbook": "data/source/BrightHome_Dataset.xlsx",
+  "worksheet": "brighthome_dataset",
+  "records": 2500,
+  "column_count": 15,
+  "columns": [
+    "OrderID",
+    "OrderDate",
+    "Region",
+    "City",
+    "Category",
+    "Product",
+    "Quantity",
+    "UnitPrice",
+    "Discount",
+    "Sales",
+    "Profit",
+    "CustomerSegment",
+    "ShipMode",
+    "CustomerID",
+    "ShippingCost"
+  ],
+  "date_range": {
+    "min": "2023-01-01",
+    "max": "2025-12-31"
+  },
+  "dimensions": {
+    "orders": 2500,
+    "customers": 855,
+    "regions": 4,
+    "cities": 14,
+    "categories": 5,
+    "products": 20,
+    "shipping_modes": 4,
+    "customer_segments": 3
+  },
+  "data_quality": {
+    "missing_values_by_column": {
+      "OrderID": 0,
+      "OrderDate": 0,
+      "Region": 0,
+      "City": 0,
+      "Category": 0,
+      "Product": 0,
+      "Quantity": 0,
+      "UnitPrice": 0,
+      "Discount": 0,
+      "Sales": 0,
+      "Profit": 0,
+      "CustomerSegment": 0,
+      "ShipMode": 0,
+      "CustomerID": 0,
+      "ShippingCost": 0
+    },
+    "total_missing_cells": 0,
+    "exact_duplicate_rows": 0,
+    "distinct_order_ids": 2500,
+    "duplicate_order_id_occurrences": 0,
+    "invalid_dates": 0,
+    "sales_equals_quantity_times_unit_price_at_cent_precision": {
+      "rows_checked": 2500,
+      "matches": 2500,
+      "mismatches": 0
+    },
+    "nonzero_discount_rows_where_sales_remains_pre_discount": 1497,
+    "discount_distribution": {
+      "0": 1003,
+      "0.05": 472,
+      "0.1": 508,
+      "0.15": 288,
+      "0.2": 229
+    }
+  },
+  "calculated_metrics": {
+    "recorded_sales": "1067061.93",
+    "profit": "198747.08",
+    "shipping_cost": "76477.65",
+    "profit_less_shipping_assumption": "122269.43",
+    "profit_to_recorded_sales_pct": "18.63",
+    "post_shipping_profit_to_recorded_sales_pct": "11.46",
+    "orders": 2500,
+    "unique_customers": 855,
+    "average_order_value": "426.82",
+    "average_profit_per_order": "79.50",
+    "mean_discount_pct": "6.54",
+    "nonzero_discount_orders": 1497,
+    "nonzero_discount_share_pct": "59.88",
+    "estimated_discount_value_before_order_rounding": "73494.18",
+    "discount_adjusted_sales_proxy": "993567.75",
+    "sales_weighted_estimated_discount_pct": "6.89",
+    "profit_margin_on_discount_adjusted_proxy_pct": "20.00",
+    "post_shipping_margin_on_discount_adjusted_proxy_pct": "12.31",
+    "average_shipping_cost": "30.59",
+    "sales_to_shipping_cost_ratio": "13.95",
+    "discount_profit_pearson_correlation": "-0.032",
+    "total_quantity": 4057,
+    "mean_sales_per_quarter": "88921.83"
+  },
+  "metric_reconciliation": {
+    "questions_checked": 50,
+    "numeric_mismatches": 0,
+    "definition_caveats": [
+      1,
+      3,
+      13,
+      31,
+      49,
+      50
+    ]
+  },
+  "interpretation_caveats": [
+    "Sales is pre-discount basis in the source because Sales equals Quantity × UnitPrice.",
+    "Estimated discount value and discount-adjusted Sales are proxies, not explicit source measures.",
+    "Profit less ShippingCost assumes the Profit field does not already include shipping.",
+    "Currency and the source Profit formula are not explicitly stored in the workbook."
+  ]
+}

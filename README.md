@@ -1,73 +1,81 @@
 # BrightHome Retail — Sales Analytics Dashboard
 
-A portfolio project using **Power BI, Power Query, and DAX** to explore sales, profit, product performance, regional results, customer segments, and shipping metrics for a fictional home-goods retailer.
+A Power BI portfolio project exploring a simulated home-goods retailer's orders, recorded sales, profit, discounting, regional performance, and shipping costs.
 
 ![BrightHome dashboard overview](screenshots/dashboard/dashboard-overview.png)
 
-## Project at a glance
+## Project summary
 
-- **Business scenario:** Fictional multi-region home-goods retailer
-- **Dataset size:** 2,500 sales records
-- **Model:** Sales, Products, Customers, and Stores tables
-- **Tools:** Power BI Desktop, Power Query, DAX, Excel
-- **Period:** The project notes include annual summaries for 2023–2025; confirm the workbook/report filters for the exact date range before comparing periods.
-
-## Key reported results
-
-The figures below are the existing project's documented results and are retained from the original business-question notes. Reconcile them against the current PBIX and source workbook before presenting them as independently audited.
-
-| KPI / question | Documented result |
+| Measure | Verified result |
 |---|---:|
-| Total sales revenue | $1,067,061.93 |
-| Total profit | $198,747.08 |
-| Overall profit margin | 18.63% |
-| Number of orders | 2,500 |
-| Average order value | $426.82 |
+| Source records | 2,500 |
+| Distinct orders | 2,500 |
 | Unique customers | 855 |
-| Average discount rate | 6.54% |
-| Average shipping cost | $30.59 |
+| Date range | 2023-01-01 to 2025-12-31 |
+| Recorded Sales | $1,067,061.93 |
+| Profit (source column) | $198,747.08 |
+| Shipping costs | $76,477.65 |
+| Profit less shipping costs | $122,269.43 |
 
-## Main insights documented
+**Metric-definition caveat:** The source workbook has a separate `Discount` percentage column, but `Sales = Quantity × UnitPrice` in all 2,500 records. Recorded `Sales` does not deduct discounts. Describe it as *recorded Sales on a pre-discount basis* until the intended revenue policy is confirmed.
 
-- **Regions:** South is documented as the highest-sales region; Midwest is documented as the lowest-sales region. West is documented as the most profitable.
-- **Categories:** Furniture is documented as the highest-sales and most-profitable category; Decor is documented as the lowest-sales category.
-- **Product:** Office Chair is documented as the top product by sales; Sofa is documented as the most profitable product.
-- **Customer segment:** Consumer is documented as the largest sales contributor.
-- **Shipping:** Standard Class is documented as the most-used shipping mode.
+The project description uses dollar formatting and describes a fictional US retailer, but the workbook does not store a currency code. Confirm currency before using the file outside the portfolio scenario.
 
-See the [50 business questions and answers](docs/50-business-questions-answers.md) for the full existing result set.
+## Headline metrics
 
-## Dashboard and project files
+| Measure | Result | Definition |
+|---|---:|---|
+| Recorded Sales | $1,067,061.93 | Sum of `Sales` |
+| Total Profit | $198,747.08 | Sum of source `Profit` |
+| Profit / recorded Sales | 18.63% | `SUM(Profit) / SUM(Sales)` |
+| Shipping costs | $76,477.65 | Sum of `ShippingCost` |
+| Profit less shipping costs | $122,269.43 | Assumes Profit excludes shipping |
+| Profit less shipping / recorded Sales | 11.46% | Post-shipping profit / recorded Sales |
+| Average order value | $426.82 | Recorded Sales / distinct orders |
+| Average profit per order | $79.50 | Profit / distinct orders |
+| Mean order discount | 6.54% | Unweighted average of `Discount` |
+| Orders with a non-zero discount | 1,497 (59.88%) | Count where `Discount > 0` |
+| Average shipping cost | $30.59 | Shipping cost per order |
+| Recorded Sales / shipping cost | 13.95x | Total Sales / total shipping cost |
 
-- [Power BI report](powerbi/BrightHome_Sales_Analytics.pbix)
-- [Dataset workbook](data/source/BrightHome_Dataset.xlsx)
-- [Dashboard overview screenshot](screenshots/dashboard/dashboard-overview.png)
-- [Additional dashboard screenshots](screenshots/dashboard/)
-- [Data-model/source-table screenshots](screenshots/data-model/)
-- [Data-preparation screenshots](screenshots/data-preparation/)
-- [Metric and insight screenshots](screenshots/metrics/)
-- [50 business questions and answers — Markdown](docs/50-business-questions-answers.md)
-- [50 business questions and answers — PDF](docs/reference/50-business-questions-answers.pdf)
-- [Folder structure guide](docs/project-structure.md)
+A separate exploratory calculation estimates discounts at **$73,494.18** and discount-adjusted Sales at **$993,567.75** from `Sales × Discount`. These are proxies, not confirmed accounting measures: the workbook has no explicit `DiscountAmount` or `NetSales` field and no documented per-order rounding rule. Do not change the margin denominator without checking how the Profit measure treats discounts.
 
-## Suggested exploration path
+## Verified findings
 
-1. Open the PBIX report in Power BI Desktop.
-2. Review the model relationships and confirm the intended table grain.
-3. Check Power Query transformations and the derived revenue fields.
-4. Review the DAX measures for revenue, profit, and margin.
-5. Use dashboard filters to compare region, category, product, customer segment, and shipping mode.
-6. Reconcile the headline results in the business-question notes against the current report.
+- **South leads in recorded Sales:** $274,292.29. **West leads in total Profit:** $51,438.77 and has the highest regional Profit/Sales ratio (19.46%).
+- **Furniture leads category Sales and total Profit:** $403,893.16 in Sales and $72,102.74 in Profit. Its Profit/Sales ratio is 17.85%; Outdoor has the highest category ratio at 19.58%.
+- **Office Chair leads product Sales:** $87,643.02. Sofa has the highest product Profit at $15,826.54.
+- **Shipping warrants follow-up:** assuming Profit excludes shipping, Decor Profit ($12,168.80) is below ShippingCost ($15,231.63), a difference of -$3,062.83. Kitchenware has only $1,335.25 left after shipping.
+- **Annual Sales:** $356,708.02 in 2023, $349,858.76 in 2024 (-1.92%), and $360,495.15 in 2025 (+3.04%).
+- **Discount-profit Pearson correlation:** -0.032, a very weak linear relationship that does not establish causation.
+- **All 50 documented business-question answers reconcile numerically to the workbook.** The audit identifies definition/label caveats rather than headline arithmetic discrepancies.
 
-## Recommended next improvements
+## Audit and supporting files
 
-1. Add a concise measure dictionary with formulas and definitions for sales, profit, profit margin, average order value, and shipping cost.
-2. Make sure all monetary metrics use the same currency and that the currency is explicit in the report.
-3. Add data-quality checks for keys, duplicate rows, missing values, and relationships between Sales, Products, Customers, and Stores.
-4. Turn the strongest findings into recommendations with the supporting KPI, caveats, and a way to measure impact.
+- [Full data audit and reconciliation notes](docs/data-audit-and-reconciliation.md)
+- [Reconciliation of all 50 business questions](reports/metric-reconciliation.csv)
+- [Data-quality audit JSON](reports/data-quality-audit.json)
+- [Data dictionary](docs/data-dictionary.md)
+- [Updated business questions and answers](docs/50-business-questions-answers.md)
 
-## Notes and limitations
+## Reproduce the audit
 
-- BrightHome is described as a fictional retailer; this should be presented as a simulated portfolio case, not real company performance.
-- Financial figures are carried over from the existing project notes. This organization pass preserves the workbook and PBIX rather than recalculating their measures.
-- If screenshots and report totals disagree, treat the PBIX and documented measure definitions as the source for reconciliation before publishing conclusions.
+From the repository root, run with Python 3.10+:
+
+```bash
+python scripts/audit_brighthome.py
+```
+
+The standard-library script reads the XLSX package, checks data shape and the Sales calculation, and regenerates the quality-audit JSON. It does not modify the workbook or PBIX.
+
+## Recommendations
+
+1. Define Sales/discount policy. If net Sales are needed, document a DiscountAmount and NetSales formula plus a per-order rounding rule.
+2. Confirm what Profit includes before treating `Profit - ShippingCost` as a contribution measure.
+3. Label 18.63% as Profit / recorded Sales and 11.46% as (Profit − ShippingCost) / recorded Sales until the margin basis is verified.
+4. Review categories/products where shipping may absorb much of the recorded Profit.
+5. Measure discount policy changes with a baseline and controlled test rather than inferring causality from a near-zero correlation.
+
+## Tools demonstrated
+
+Power BI, Power Query, DAX, Excel, data-quality validation, metric reconciliation, descriptive statistics, and business communication.

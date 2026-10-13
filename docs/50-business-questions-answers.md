@@ -1,12 +1,15 @@
 # BrightHome Retail — 50 Business Questions & Answers
 
-**1. What is the total sales revenue?**
+> **Definition note from source-data audit:** The workbook's `Sales` equals `Quantity × UnitPrice` in all 2,500 rows and is not reduced by the separate `Discount` field. Question 1 is the recorded Sales total (pre-discount basis), question 3 is `Profit / Sales`, question 13 is the unweighted mean of discount percentages, question 49 is the historical average per quarter, and question 50 is `(Profit − ShippingCost) / Sales`. The workbook has no explicit `NetSales` or `DiscountAmount` column; see the audit notes before relabelling these metrics as net revenue or net profit margin.
+
+
+**1. What is the total recorded Sales amount before applying the separate discount field?**
 $1,067,061.93
 
 **2. What is the total profit?**
 $198,747.08
 
-**3. What is the overall profit margin?**
+**3. What is the Profit-to-Sales ratio using the recorded Sales column?**
 18.63%
 
 **4. Which region generates the highest sales?**
@@ -36,7 +39,7 @@ Office Chair
 **12. What is the average order value?**
 $426.82
 
-**13. What is the average discount rate given?**
+**13. What is the simple average discount rate across orders?**
 6.54%
 
 **14. Which customer segment contributes the most sales?**
@@ -144,9 +147,9 @@ San Francisco
 **48. What is the sales-to-shipping-cost ratio overall?**
 13.95x
 
-**49. What is the estimated quarterly sales run-rate?**
+**49. What is average recorded Sales per quarter across the 12 quarters in 2023–2025?**
 $88,921.83
 
-**50. What is the overall net profit margin after accounting for shipping cost?**
+**50. What is (Profit minus ShippingCost) as a percentage of recorded Sales?**
 11.46%
 
